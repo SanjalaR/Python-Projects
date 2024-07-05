@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    {% block styles %}
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    {% endblock %}
+
+    <title>{% block title %}Restaurants{% endblock %}</title>
+  </head>
+
+
+<body>
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <h1>All Cafes</h1>
+        <a class="btn btn-warning btn-lg" href="{{url_for('add')}}" role="button" style="float: right;">Add a Cafe</a>
+
+
+	  <table class="table table-dark table-striped table-hover">
+          <tr>
+              {% for item in headers %}
+              <td>{{item}}</td>
+              {%endfor%}
+          </tr>
+          {% for cafe in cafes %}
+          <tr>
+              {% for item in headers %}
+                {% if item == 'map_url' %}
+                    <td><a href="{{cafe[item]}}">Maps Link</a></td>
+                {% elif item=='img_url' %}
+                    <td><a href="{{cafe[item]}}">Image Link</a></td>
+                {% elif item=='name' %}
+                    <td><a href="{{url_for('one_cafe', cafe_id=cafe['id'])}}">{{cafe[item]}}</a></td>
+                {% else %}
+                    <td>{{cafe[item]}}</td>
+                {% endif %}
+              {% endfor %}
+          </tr>
+          {% endfor %}
+  	  </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
+
