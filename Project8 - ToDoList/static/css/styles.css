@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 70%;
+  height: 100vh;
+  background-color: #333;
+  color: white;
+  padding: 50px;
+  margin: 50px auto;
+}
+
+input[type=text]{
+  border: 2px solid yellow;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  height: 37px;
+  width: 300px;
+}
+
+input, .tasks{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+
+a:link, a:visited, a:hover, a:active{
+padding: 20px;
+  color: yellow;
+  background-color: transparent;
+  text-decoration: none;
+}
